@@ -7,7 +7,13 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist')
   },
+  devServer: {
+    contentBase: './dist'
+  },
   plugins:[
-    new htmlWebpackPlugin()
+    new htmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html'
+    })
   ]
 }
