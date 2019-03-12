@@ -6,40 +6,69 @@
 </head>
 <body>
 	<script type="text/javascript">
-      /*在一端进行删除和插入操作*/
-      function testHuiWen(str){
-      	var mid = Math.floor(str.length/2);
-      	var isHui = true;
-      	for(var i = 0; i < mid; i++) {
-      	  if (str[i] != str[str.length - 1 - i]) {
-             isHui = false;
-             break
-      	  }
-      	}
-      	return isHui;
-      }		
-      console.log(Date.now())
-      console.log(testHuiWen('xyzzx'));
-      console.log(Date.now())
+		//JS数组实现栈  
+    function Stack() {
+			let items = [];
+			// 添加一个或多个新元素到栈顶
+			this.push = function(element) {
+				items.push(element);
+			}
+			// 移除栈顶元素，并返回被移除的元素
+			this.pop = function() {
+				return items.pop();
+			}
+			// 返回栈顶元素，数组不做修改
+			this.peek = function() {
+				return items[items.length - 1];
+			}
+			// 判断栈是否为空，为空，返回true
+			this.isEmpty = function() {
+				return !items.length;
+			}
+			// 移除栈所有元素
+			this.clear = function() {
+				items = [];
+			}
+			// 返回栈元素个数
+			this.size = function() {
+				return items.length;
+			}
+		}
 
-      function test(str) {
-      	var mid = Math.floor(str.length/2);
-      	var strBefore = [];
-      	for (var i =0 ; i < mid; i++) {
-      	  strBefore[i] = str[i];
-      	}
-      	for (var j = mid+1;j<str.length;j++){
-      	  if (str[i] != str[j]){
-      	  	break;
-      	  }
-      	  i--;
-      	}
-      	return i;
-      }
-      console.log(Date.now())
-      console.log(test('xyzzx'));
-      console.log(Date.now())
-      /*时间复杂度，O(M)，性能是差不多*/
+		/*在一端进行删除和插入操作*/
+		function testHuiWen(str){
+			var mid = Math.floor(str.length/2);
+			var isHui = true;
+			for(var i = 0; i < mid; i++) {
+				if (str[i] != str[str.length - 1 - i]) {
+						isHui = false;
+						break
+				}
+			}
+			return isHui;
+		}		
+		console.log(Date.now())
+		console.log(testHuiWen('xyzzx'));
+		console.log(Date.now())
+
+		function test(str) {
+			var mid = Math.floor(str.length/2);
+			var strBefore = [];
+			for (var i =0 ; i < mid; i++) {
+				strBefore[i] = str[i];
+			}
+			for (var j = mid+1;j<str.length;j++){
+				if (str[i] != str[j]){
+					break;
+				}
+				i--;
+			}
+			return i;
+		}
+		console.log(Date.now())
+		console.log(test('xyzzx'));
+		console.log(Date.now())
+		/*时间复杂度，O(M)，性能是差不多*/
 	</script>
 </body>
 </html>

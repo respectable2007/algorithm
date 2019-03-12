@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>循环队列</title>
+  </head>
+  <body>
+    <script type='text/javascript'>
+      //基本队列
+      function Queue() {
+        let items = [];
+        this.enqueue = function(element) {
+          items.push(element);
+        }
+        this.dequeue = function() {
+          return items.shift();
+        }
+        this.size = function() {
+          return items.length;
+        }
+      }
+      //循环队列
+      function recycleQueue(names, num) {
+        let arr = new Queue(),
+            lens = names.length,
+            outname = '';
+        //输入队列内容
+        for(let i = 0; i < lens; i++) {
+          arr.enqueue(names[i]);
+        }
+        //循环队列，直至队列剩下一个元素停止
+        while(arr.size() > 1) {
+          for(let j = 0; j < num; j++) {
+            arr.enqueue(arr.dequeue());//未到指定索引，出队后再入队
+          }
+          outname = arr.dequeue();//被淘汰且出队
+          console.log(outname + 'is out');
+        }
+        return arr.dequeue();
+      }
+      var names = [1,2,3,4,5,6,7,8],
+          num = 4,//到指定索引，该项被淘汰且出队
+          winner = recycleQueue(names, 4);
+      console.log('The winner is ' + winner);
+    </script>
+  </body>
+</html>

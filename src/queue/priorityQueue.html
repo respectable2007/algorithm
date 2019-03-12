@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>优先队列</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //根据优先级，元素在正确的位置入队
+      function PriorityQueue() {
+        let items = [];
+        function CreateElement(e, p) {
+          this.el = e;
+          this.pr = p;
+        }
+        this.enqueue = function(element, p) {
+          let ele = new CreateElement(element, p),
+              isAdd = false,
+              lens = items.length;
+          for(let i = 0; i < lens; i++) {
+            if(ele.pr < items[i].pr) {
+              items.splice(i,0,ele);
+              isAdd = true;
+              break;
+            }
+          }
+          if(!isAdd) {
+            items.push(ele);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
