@@ -1,5 +1,5 @@
 # data structures and algorithms
-# ES6/7
+## ES6/7
   npm install babel-loader babel-core babel-preset-env --save-dev<br>
   babel-loader@7.x install babel-core@6.x / babel-loader@8.x install babel-core@7.x<br>
   webpack.base.config.js<br>
@@ -13,7 +13,7 @@
   }
   ```
   don't need file .babelrc
-# css modules + scss
+## css modules + scss
   npm install style-loader css-loader sass-loader node-sass --save-dev<br>
   webpack.base.config.js<br>
   ```
