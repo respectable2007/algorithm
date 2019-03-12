@@ -5,7 +5,32 @@
 	<title>队列</title>
 </head>
 <body>
-  <script type="text/javascript">
+	<script type="text/javascript">
+	  // JS数组实现队列
+    function Queue() {
+			let items = [];
+			// 在队尾添加一个元素-入队
+			this.enqueue = function(element) {
+				items.push(element);
+			}
+			// 删除队首一个元素,并返回删除的元素-出队
+			this.dequeue = function() {
+         return items.shift();
+			}
+			// 返回队列第一个元素，数组不做改变
+			this.front = function() {
+				return items[0];
+			}
+			// 队列是否为空，为空，则返回true
+			this.isEmpty = function() {
+				return !items.length;
+			}
+			// 返回队列的元素个数
+			this.size = function() {
+				return items.length;
+			}
+		}
+
   	/*算法的差距*/
   	var arr = [6,3,1,7,5,8,9,2,4];
   	function getQQ(arr){
