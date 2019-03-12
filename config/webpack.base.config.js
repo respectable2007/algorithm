@@ -8,7 +8,7 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\scss$/,
+        test: /\.scss$/,
         exclude: path.resolve(__dirname,'./src/styles'),
         use: [{
             loader: 'style-loader'
@@ -19,18 +19,24 @@ module.exports = {
               localIdentName: '[name]-[local]--[hash:base64:5]'
             }
         },{
-            loader: 'scss-loader'
+            loader: 'sass-loader'
         }]
     },{
-        test: /\scss$/,
+        test: /\.scss$/,
         include: path.resolve(__dirname,'./src/styles'),
         use: [{
             loader: 'style-loader'
         },{
-            loader: 'css-loader',
+            loader: 'css-loader'
         },{
-            loader: 'scss-loader'
+            loader: 'sass-loader'
         }]
+    },{
+      test: /\.js$/,
+      exclude: /(node_modules|dist)/,
+      use: [{
+        loader: 'babel-loader'
+      }]
     }]
   },
   plugins:[
