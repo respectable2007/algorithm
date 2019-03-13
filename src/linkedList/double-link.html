@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>双向链表</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      ;(function(){
+         function DoubleLinked() {
+           function Node(element) {
+             this.element = element;
+             this.next = null;
+             this.prev = null;
+           }
+          let length = 0,head = null,tail = null;
+          this.append = function(element) {// 向列表尾部添加一个新的项
+            let node = new Node(element),
+                cur = null;
+            if(head === null) {
+              head = node;
+            } else {
+              cur = head;
+              while(cur.next) {
+                cur = cur.next;
+              }
+              cur.next = node;
+              node.prev = cur;
+            }
+            tail = node;
+            length ++;
+          }
+          this.insert = function(position, element) {// 向列表的特定位置插入一个新的项
+            if(position >= 0 && position <= length) {
+              let node = new Node(element),cur = null,index = 0,is = position > Math.floor(length / 2);
+              if(!is) {
+                cur = head;
+                if(position === 0) {
+                  node.next = cur;
+                  cur.prev = node;
+                  head = node;
+                } else {
+                  while(index ++ < position) {
+                    cur = cur.next;
+                  }
+                  cur.prev.next = node;
+                  node.prev = cur.prev;
+                  node.next = cur;
+                  cur.prev = node;
+                }
+              } else {
+                cur = tail;
+                if (position === length) {
+                  node.prev = cur.prev;
+                  node.next = cur;
+                  cur.prev = node;
+                  cur.prev.next = node;
+                  tail = node;
+                } else {
+                  index = length;
+                  while(index -- > position) {
+                    cur = cur.prev;
+                  }
+                  node.next = cur;
+                  node.prev = cur.prev;
+                  cur.prev = node;
+                  cur.prev.next = node;
+                }
+              }
+              length ++;
+              return true;
+            } else {
+                return false;
+            }
+          }
+          this.remove = function(element) {// 从列表中移除一个项
+            let index = this.indexOf(element);
+            return this.removeAt(index);
+          }
+          this.indexOf = function(element) {// 返回元素在列表中的索引，若不存在，则返回-1
+            let cur = head,
+                index = 0;
+            while(cur) {
+                if(cur.element === element) {
+                return index;
+                }
+                index ++;
+                cur = cur.next;
+            }
+            return -1;
+          }
+          this.removeAt = function(position) {// 从列表的特定位置移除一项
+            if(position >= 0 && position <= length) {
+              let cur = head,index = 0,prev = null;
+              if(position === 0) {
+                head = cur.next;
+                cur.prev = null;
+              } else {
+                while(index ++ < position) {
+                  prev = cur;
+                  cur = cur.next;
+                }
+                prev.next = cur.next;
+                cur.next.prev = prev;
+              }
+              length --;
+              return cur.element;
+            } else {
+                return null;
+            }
+          }
+          this.isEmpty = function() {// 链表是否为空，若为空，返回true
+            return !length;
+          }
+          this.size = function() {// 返回链表包含的元素个数
+            return length;
+          }
+          this.toString = function() {// 转为字符串形式
+            let cur = head,
+                index = 0,
+                arr = [];
+            while(index ++ <= length) {
+                if(cur !== null) {
+                arr.push(cur.node.toString());
+                }
+                cur = cur.next;
+            }
+            return arr.join(' ');
+          }
+         }
+        return DoubleLinked;
+      })();
+    </script>
+  </body>
+</html>
