@@ -95,28 +95,36 @@
               },
               removeNode = function(node, key) {
                 if(node) {
-                  if(key < node.key) {
-                    removeNode(node.left, key);
-                    return node;
-                  } else if(key > node.key) {
-                    removeNode(node.right, key);
-                    return node;
+                  if(key < node.key && key !== node.left.key) {
+                    return removeNode(node.left, key);
+                  } else if(key > node.key && key !== node.right.key) {
+                    return removeNode(node.right, key);
                   } else {
-                    if( node.right === null && node.left === null) {
-                      let cur = node;
-                      node = null;
-                      return cur;
+                    let remove = node.left.key === key ? 'left' : 'right',
+                        cur = node[remove];
+                    // 外部节点
+                    if( cur.right === null && cur.left === null) {
+                      node[remove] = null;
+                      return node;
                     }
-                    if(node.left === null) {
-                      node = node.right;
+                    // 只有右节点
+                    if(cur.left === null) {
+                      cur = cur.right;
+                      node[remove] = cur;
                       return node;
-                    } else if(node.right === null) {
-                      node = node.left;
+                    // 只有左节点
+                    } else if(cur.right === null) {
+                      cur = cur.left;
+                      node[remove] = cur;
                       return node;
+                    // 有左右节点
                     } else {
-                      let ex = findMinNode(node.right);
-                      node.key = ex.key;
-                      node.right = removeNode(node.right, ex.key);
+                      //找个右侧节点最小值的节点，替换被删除的节点 
+                      let ex = findMinNode(cur.right);
+                      cur.key = ex.key;
+                      //右侧节点删除最小值节点
+                      cur.right = removeNode(node.right, ex.key);
+                      node[remove] = cur;
                       return node;
                     }
                   }
@@ -150,6 +158,7 @@
           this.max = function() {//返回树中最大的值或键
             return maxNode(root);
           }
+          //学习javascript数据结构与算法中，二叉搜索树删除方法代码错误
           this.remove = function(key) {//从树中移除某个键
             return removeNode(root, key);
           }
@@ -165,10 +174,12 @@
         console.log(key);
       }
       tree.inOrderTraverse(showKey);
-      tree.preOrderTraverse(showKey);
-      console.log(tree.min());
-      console.log(tree.max());
-      console.log(tree.search(7));
+    //   tree.preOrderTraverse(showKey);
+    //   console.log(tree.min());
+    //   console.log(tree.max());
+    //   console.log(tree.search(7));
+      console.log(tree.remove(7));
+      tree.inOrderTraverse(showKey);
     </script>
   </body>
 </html>
