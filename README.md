@@ -1,5 +1,5 @@
 # data structures and algorithms
-## ES6/7
+## ES6/7 to ES5
   npm install babel-loader babel-core babel-preset-env --save-dev<br>
   babel-loader@7.x install babel-core@6.x / babel-loader@8.x install babel-core@7.x<br>
   webpack.base.config.js<br>
@@ -44,4 +44,6 @@
   }
   ```  
   ## javascript data structure and algorithms
-  
+  sample stack<br>
+  sample queue<br>
+  sample linked-list<br>

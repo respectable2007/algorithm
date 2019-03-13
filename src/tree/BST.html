@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>二叉搜索树</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      ;(function(){
+        function BinarySearchTree() {
+          let Node = function(key) {
+            this.key = key;
+            this.left = null;
+            this.right = null;
+          }
+          let root = null;//根元素
+          this.insert = function(key) {//向树中插入一个新的键
+            let node = new Node(key);
+            if(root === null) {
+              root = node;
+            } else {
+              
+            }
+          }
+          this.search = function() {//在树中查找一个键，若节点存在，返回true
+
+          }
+          this.inOrderTraverse = function() {//通过中序遍历方式遍历所有节点
+
+          }
+          this.preOrderTraverse = function() {//通过先序遍历方式遍历所有节点
+
+          }
+          this.postOrderTraverse = function() {//通过后序遍历方式遍历所有节点
+
+          }
+          this.min = function() {//返回树中最小的值或键
+
+          }
+          this.max = function() {//返回树中最大的值或键
+
+          }
+          this.remove = function(key) {//从树中移除某个键
+            
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
