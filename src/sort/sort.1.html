@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>快速排序</title>
+</head>
+<body>
+  <script type="text/javascript">
+  ;(function(window) {
+     function quickSort(arr, left, right) {
+		   var temp = arr[left - 1],
+			     i = left,
+					 j = right;
+			 if(left >= right) {
+				 return;
+			 }
+			 while(i !== j ) {
+				 while(arr[j] < temp && j > i) {
+					 j --;
+				 }
+				 while(arr[i] > temp && i < j) {
+					 i ++;
+				 }
+				 let t = arr[j];
+				 arr[j] = arr[i];
+				 arr[i] = t;
+			 }
+			 if(i !== left -1) {
+				arr[left - 1] = arr[i];
+				arr[i] = temp;
+			 }
+			 quickSort(arr, 1, i);
+			 quickSort(arr, i + 1 , right);
+		 }
+		 window.quickSort = quickSort;
+	})(window);
+  
+  </script>
+</body>
+</html>

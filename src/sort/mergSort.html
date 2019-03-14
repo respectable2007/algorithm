@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>归并排序</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+     ;(function(window) {
+      function mergeSplit(arr) {
+        let len = arr.length;
+        if(len === 1) {
+          return arr;
+        }
+        let mid = Math.floor(len / 2),
+            left = arr.slice(0, mid),
+            right = arr.slice(mid, len);
+        return merge(mergeSplit(left), mergeSplit(right));
+      }
+      function merge(left, right) {
+        let rel = [],
+            il = 0,
+            ir = 0,
+            llens = left.length,
+            rlens = right.length;
+        while(il < llens && ir < rlens) {
+          if(left[il] > right[ir]) {
+            rel.push(right[ir ++]);
+          } else {
+            rel.push(left[il ++]);
+          }
+        }
+        while(il < llens) {
+          rel.push(left[il ++]);
+        }
+        while(ir < rlens) {
+          rel.push(right[ir ++]);
+        }
+        return rel;
+      }
+      function mergeSort(arr) {
+        return mergeSplit(arr);
+      }
+      window.mergeSort = mergeSort;
+     })(window);
+     var arr = [10,3,65,32,6,8];
+     console.log(mergeSort(arr));
+    //  console.log(arr);
+    </script>
+  </body>
+</html>

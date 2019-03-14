@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>快速排序</title>
+</head>
+<body>
+  <script type="text/javascript">
+  ;(function(window) {
+    //  function getBaseNumber(arr) {
+    //    let base
+    //  }
+     function quickSort(arr, left, right) {
+       let base = Math.floor((left + right) / 2),
+           temp = arr[base],
+           i = left,
+           j = right,
+           t = null;
+       if(left > right) {
+         return;
+       }
+       while(i !== j) {
+        // 右向左找小于基准数
+	  	/*一定要先右到左，
+	  	  假如先从左向右找大于基准数的数，
+	  	  会出现找到的大于基准数的位数正好是基准数归位的位数，
+	  	  进行基准数归位，交互位置。
+	  	  此时，基准数左边会出现大于基准数的情况
+	  	*/
+         while(arr[j] > temp && i < j) {//跳过大于基准数的项
+          j --;
+         }
+         while(arr[i] < temp && i < j) {//跳过小于基准数的项
+          i ++;
+         }
+         if (i < j) {
+           t = arr[i];
+           arr[i] = arr[j];
+           arr[j] = t;
+         }
+       }
+       quickSort(arr, left, i - 1);
+       quickSort(arr, i + 1, right);
+     }
+	 window.quickSort = quickSort;
+	})(window);
+    // var arr = [10,3,65,32,6,8];
+    var arr = [6,1,2,7,9,3,4,5,10,8];
+    quickSort(arr, 0, arr.length - 1);
+    console.log(arr);
+  </script>
+</body>
+</html>
