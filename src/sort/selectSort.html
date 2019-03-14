@@ -6,11 +6,29 @@
   </head>
   <body>
     <script type="text/javascript">
-      ;(function() {
+      ;(function(window) {
          function selectSort(arr) {
-           
+           let lens = arr.length,
+               min = 0;
+           for(let i = 0; i < lens - 1; i++) {
+               min = i;
+             for(let j = i; j < lens; j++) {
+               if(arr[min] > arr[j]) {
+                 min = j;
+               }
+             }
+             if( i !== min) {
+              let t = arr[min];
+              arr[min] = arr[i];
+              arr[i] = t;
+             }
+           }
          }
-      })()
+         window.selectSort = selectSort;
+      })(window)
+      var arr = [10,3,65,32,6,8];
+      selectSort(arr);
+      console.log(arr);
     </script>
   </body>
 </html>
