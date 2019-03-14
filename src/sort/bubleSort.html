@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>冒泡排序</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+   /*冒泡排序 n个数，时间浪费*/
+  var arr = [12,35,99,18,76];
+  /*从小到大*/
+  function sort(arr) {
+    for(var i =0 ; i<arr.length -1; i++){ //n-1趟排序
+  	  for(var j = 0; j< arr.length - i; j++) {//已经归位的不再参与排序，n-i
+  	  	if (arr[j+1]) {
+  	  		var t ;
+  	  		if (arr[j+1] < arr[j]) {//大小交换
+  	  		  t = arr[j];
+  	  		  arr[j] = arr[j+1];
+  	  		  arr[j+1] = t;
+  	  		}
+  	  	}
+  	  }
+  	}
+  	return arr;
+  }
+  console.log(sort(arr))
+  </script>
+</body>
+</html>
