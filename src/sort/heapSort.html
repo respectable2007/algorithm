@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>堆排序</title>
+</head>
+<body>
+  <script type="text/javascript">
+  ;(function(window) {
+	 function swap(arr,i,j) {
+	  let temp = null;
+	  temp = arr[i];
+	  arr[i] = arr[j];
+	  arr[j] = temp;
+	 }
+	 function shiftDown(arr, lens, n) {
+	   let flag = 0;
+	   while(n * 2 < lens && flag == 0) {
+		 let l = n * 2,
+		     r = n * 2 + 1,
+			 max = n;
+		 if(arr[r] !== undefined && arr[l] < arr[r]) {
+			max = r;
+		 }
+		 if(arr[l] !== undefined && arr[l] > arr[max]) {
+			max = l;
+		 }
+		 if(max !== n) {
+		   swap(arr, max, n);
+		   n = max;
+		 } else {
+		   flag = 1;
+		 }
+	   }
+	 }
+	 function buildHeap(arr, size) {
+	   let  i = Math.floor(size / 2);
+	   for( i; i > 0; i --) {
+		 shiftDown(arr, size, i);
+	   }
+	 }
+     function heapSort(arr) {
+	   let size = arr.length - 1;
+	   buildHeap(arr, size);
+	   while(size > 1) {
+		swap(arr, 1,size);
+		size --;
+		buildHeap(arr, size);
+	   }
+	   console.log(arr);
+     }
+	 window.heapSort = heapSort;
+	})(window);
+	var arr = [undefined, 3, 5, 1, 6, 4, 7, 2, 10, 15, 8, 11, 0];
+    heapSort(arr);
+	// console.log(arr);
+  </script>
+</body>
+</html>
