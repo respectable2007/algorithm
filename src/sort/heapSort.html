@@ -7,13 +7,15 @@
 <body>
   <script type="text/javascript">
   ;(function(window) {
+	 /*从小到大排序：建立最大堆，反之，建立最小堆*/
+	 /*交换元素*/
 	 function swap(arr,i,j) {
 	  let temp = null;
 	  temp = arr[i];
 	  arr[i] = arr[j];
 	  arr[j] = temp;
 	 }
-	 function shiftDown(arr, lens, n) {
+	 function shiftUp(arr, lens, n) {
 	   let flag = 0;
 	   while(n * 2 < lens && flag == 0) {
 		 let l = n * 2,
@@ -33,16 +35,29 @@
 		 }
 	   }
 	 }
+	 //
 	 function buildHeap(arr, size) {
 	   let  i = Math.floor(size / 2);
+	   /* 二叉树的每个子树都为最大堆，则二叉树就是最大堆。
+	   深度为h层，h层为叶节点，其子树只包括这个节点，因此，
+	   即是最大堆也是最小堆，不需要进行判断和操作。只需要
+	   从非叶节点开始判断即N/2处开始判断。
+	   */
 	   for( i; i > 0; i --) {
-		 shiftDown(arr, size, i);
+		 /*将子树中最大值上移，注意：当节点深度降低时，其
+		 所在的子树层级也增加，则需要循环判断需要循环判断
+		 节点子树包含的次级子树是否为最大堆。*/
+		 shiftUp(arr, size, i);
 	   }
 	 }
      function heapSort(arr) {
 	   let size = arr.length - 1;
+	   //初始化最大堆
 	   buildHeap(arr, size);
 	   while(size > 1) {
+		/* 将arr[1]与arr[size]交换，堆中最大值位于数组最后一位（
+		这个数组项已经排序好，不需要被操作了，size需要减一）。此时，
+		堆不具备最大堆性质，需要重新初始化为最大堆*/
 		swap(arr, 1,size);
 		size --;
 		buildHeap(arr, size);
