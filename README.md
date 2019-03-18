@@ -47,3 +47,5 @@
   sample stack<br>
   sample queue<br>
   sample linked-list<br>
+  sample BST<br>
+  sample 二叉树找出给定两个节点的最近公共父节点<br>
