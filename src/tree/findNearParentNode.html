@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>二叉树找出给定两个节点的最近公共父节点</title>
+  </head>
+  <script>
+   var arr = [undefined,99,5,36,7,22,17,46,12,2,19,25,28,1,92],
+       x = 36,
+       y = 92;
+   var obj = (function(arr, x, y){
+     let yIndex = arr.indexOf(y),
+         xIndex = arr.indexOf(x);
+     if(yIndex === 1 || xIndex === 1) {
+       return {
+        key: 1,
+        value: arr[1]
+       }
+     }
+     let min = 0,
+         max = 0,
+         i = []
+     if (xIndex > yIndex) {
+       min = yIndex;
+       max = xIndex;
+     } else {
+       min = xIndex;
+       max = yIndex;
+     }
+     while( min > 0) {
+       i.push(min);
+       min = Math.floor(min / 2);
+     }
+     while( max > 0) {
+       max = Math.floor(max / 2);
+       if(i.indexOf(max) > -1){
+         break;
+       }
+     }
+     return {
+       key: max,
+       value: arr[max]
+     };
+   })(arr, x, y);
+   console.log(obj);
+  </script>
+</html>
