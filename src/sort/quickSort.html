@@ -29,7 +29,7 @@
            arr[j] = t;
          }
        }
-       arr[base] = arr[i];
+       arr[left] = arr[i];
        arr[i] = temp;
        quickSort(arr, left, i - 1);
        quickSort(arr, i + 1, right);
@@ -37,8 +37,8 @@
 	 window.quickSort = quickSort;
 	})(window);
     // var arr = [10,3,65,6,8];
-    // var arr = [6,1,2,7,11,2];
-    var arr = [6,1,2,7,11,89,34,67,54,66,1024,111,345,897,569,3,4,5,10,8];
+    var arr = [6,1,2,7,11,2];
+    // var arr = [6,1,2,7,11,89,34,67,54,66,1024,111,345,897,569,3,4,5,10,8];
     quickSort(arr, 0, arr.length - 1);
     console.log(arr);
   </script>
