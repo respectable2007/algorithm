@@ -51,4 +51,5 @@
   sample 二叉树找出给定两个节点的最近公共父节点<br>
 
   ## data structure and algorithms exercises
-  example1 双排序好的数组重排序，时间复杂度尽量低
+  example1 双排序好的数组重排序，时间复杂度尽量低<br>
+  example2 两数之和<br>
