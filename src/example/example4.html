@@ -28,9 +28,28 @@
       }
       return rel === x;
     };
-    console.log(isPalindrome(-1221));
-    console.log(isPalindrome(1221));
-    console.log(isPalindrome(122));
+    /* 优化方法：思路：判断原整数前半部是否等于反转后半部
+       1、if判断条件：除0外，末尾为0的整数和负数都不是回文
+       2、循环体判断条件：整除后的x小于后部反转后的整数时，说明反转到了原整数的一半
+       3、返回值判断条件：偶数位整数，整除后的x是否与后部反转后的整数相等、
+                        奇数位整数，整除后的x是否与后部反转后的整数整除10后相等（后部反转整数比整除后的x多一位中间数）
+    */
+   /**
+     * @param {number} x
+     * @return {boolean}
+   */
+    var isPalindrome = function(x) {
+      if((x < 0) || (x % 10 === 0 && x !== 0)) {
+        return false;
+      }
+      let rel = 0;
+      while(x > rel) {
+        let mode = x % 10;
+        x = Math.floor(x / 10);
+        rel = rel * 10 + mode;
+      }
+      return rel === x || Math.floor(rel / 10) === x;
+    };
     </script>
   </body>
 </html>
