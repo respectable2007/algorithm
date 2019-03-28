@@ -56,3 +56,4 @@
   example3 整数反转<br>
   example4 回文数判断<br>
   example5 罗马文转整数<br>
+  example6 最长公共前缀<br>

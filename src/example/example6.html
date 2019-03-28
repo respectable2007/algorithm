@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>最长公共前缀</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    /**编写一个函数来查找字符串数组中的最长公共前缀。
+       如果不存在公共前缀，返回空字符串 ""。
+       示例 1: 输入: ["flower","flow","flight"] 输出: "fl"
+       示例 2:输入: ["dog","racecar","car"] 输出: ""
+       解释: 输入不存在公共前缀。
+       说明:
+       所有输入只包含小写字母 a-z 。
+    * @param {string} s
+    * @return {number}
+    */
+    var longestCommonPrefix = function(strs) {
+      let s = '',lens = strs.length;
+      if(lens === 0) {
+        return s;
+      }
+      if(lens === 1) {
+        return strs[0];
+      }
+      let sL = strs[0],
+          sLens = sL.length;
+      for(let i = 0; i < sLens; i++) {
+        let flag = true,
+            sI = sL[i];
+        for(let j = 1; j < lens; j++) {
+          if(strs[j].indexOf(sI, i) !== i) {
+            flag = false;
+            break;
+          }
+        }
+        if(flag) {
+          s += sI;
+        } else {
+          break;
+        }
+      }
+      return s;
+    };
+    /* 优化方法 */
+    var longestCommonPrefix = function(strs) {
+      let s = '',lens = strs.length;
+      if(lens === 0) {
+        return s;
+      }
+      if(lens === 1) {
+        return strs[0];
+      }
+      let sL = strs[0],
+          sLens = sL.length;
+      for(let i = 0; i < sLens; i++) {
+        let flag = true,
+            sI = sL[i];
+        for(let j = 1; j < lens; j++) {
+          if(strs[j].indexOf(sI, i) !== i) {
+            flag = false;
+            break;
+          }
+        }
+        if(flag) {
+          s += sI;
+        } else {
+          break;
+        }
+      }
+      return s;
+    };
+    console.log(romanToInt('LVIII'));
+    </script>
+  </body>
+</html>
