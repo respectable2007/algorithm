@@ -16,6 +16,7 @@
     * @param {string} s
     * @return {number}
     */
+    /* 解法1 */
     var longestCommonPrefix = function(strs) {
       let s = '',lens = strs.length;
       if(lens === 0) {
@@ -43,35 +44,22 @@
       }
       return s;
     };
-    /* 优化方法 */
+    /* 解法2 */
     var longestCommonPrefix = function(strs) {
-      let s = '',lens = strs.length;
-      if(lens === 0) {
-        return s;
+      if(strs.length === 0) {
+        return "";
       }
-      if(lens === 1) {
-        return strs[0];
-      }
-      let sL = strs[0],
-          sLens = sL.length;
-      for(let i = 0; i < sLens; i++) {
-        let flag = true,
-            sI = sL[i];
-        for(let j = 1; j < lens; j++) {
-          if(strs[j].indexOf(sI, i) !== i) {
-            flag = false;
-            break;
+      let pre = String(strs[0]);
+      for(let i = 1; i < strs.length; i++) {
+        while(strs[i].indexOf(pre) !== 0) {
+          pre = pre.substring(0, pre.length -1);
+          if(pre.length === 0) {
+            return "";
           }
         }
-        if(flag) {
-          s += sI;
-        } else {
-          break;
-        }
       }
-      return s;
+      return pre;
     };
-    console.log(romanToInt('LVIII'));
     </script>
   </body>
 </html>
