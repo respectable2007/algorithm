@@ -15,6 +15,7 @@
   don't need file .babelrc
 ## css modules + scss
   npm install style-loader css-loader sass-loader node-sass --save-dev<br>
+  如果项目包含全局样式和局部样式，可先单独对局部样式进行css module编译配置（exclude），然后对全局样式进行编译配置（include）
   webpack.base.config.js<br>
   ```
   {
